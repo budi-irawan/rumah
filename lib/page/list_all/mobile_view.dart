@@ -6,11 +6,17 @@ import 'package:rumah/template/border.dart';
 import 'package:rumah/template/colors.dart';
 import 'package:rumah/template/text_styles.dart';
 
-class MobileView extends StatelessWidget {
+class MobileView extends StatefulWidget {
   final String satu;
 
   const MobileView({Key? key, required this.satu}) : super(key: key);
 
+  @override
+  State<MobileView> createState() => _MobileViewState();
+}
+
+class _MobileViewState extends State<MobileView> {
+  var rating = 0.0;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -45,7 +51,7 @@ class MobileView extends StatelessWidget {
                       ]),
                   child: Center(
                     child: Text(
-                      'Selamat datang , $satu',
+                      'Selamat datang , ${widget.satu}',
                       style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -148,7 +154,9 @@ class MobileView extends StatelessWidget {
                                                           color: darkColor,
                                                         )),
                                                     onRatingUpdate: (value) {
-                                                      setState(() {});
+                                                      setState(() {
+                                                        rating = value;
+                                                      });
                                                     }),
                                               ],
                                             ),
@@ -282,7 +290,5 @@ class MobileView extends StatelessWidget {
       ),
     );
   }
-
-  void setState(Null Function() param0) {}
 }
 

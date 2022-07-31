@@ -86,27 +86,6 @@ class _MainNavState extends State<MainNav> {
     }
   }
 
-  Future exitDialog() {
-    return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: const Text('Apakah anda yakin ?'),
-              content: const Text('Tekan Keluar untuk keluar dari aplikasi.'),
-              actions: [
-                OutlinedButton(
-                    child: const Text('Keluar'),
-                    onPressed: () {
-                      SystemNavigator.pop();
-                    }),
-                OutlinedButton(
-                    child: const Text('Cancel'),
-                    onPressed: () {
-                      Navigator.of(context).pop(false);
-                    }),
-              ],
-            ));
-  }
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;

@@ -8,16 +8,12 @@ class WebViewLoginPage extends StatefulWidget {
   @override
   State<WebViewLoginPage> createState() => _WebViewLoginPageState();
 }
-
-// Define a corresponding State class.
-// This class holds the data related to the Form.
 class _WebViewLoginPageState extends State<WebViewLoginPage> {
-  final TextEditingController _satu = TextEditingController();
+  final _satu = TextEditingController();
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
-    TextEditingController().dispose();
+    _satu.dispose();
     super.dispose();
   }
 

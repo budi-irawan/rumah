@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
+import 'package:rumah/favorite_button.dart';
 import 'package:rumah/model/data_rumah.dart';
 import 'package:rumah/template/border.dart';
 import 'package:rumah/template/colors.dart';
@@ -221,16 +222,9 @@ class DetailMobilePage extends StatelessWidget {
   }
 }
 
-class DetailWebPage extends StatefulWidget {
+class DetailWebPage extends StatelessWidget {
   final DataRumah rumah;
   const DetailWebPage({Key? key, required this.rumah}) : super(key: key);
-
-  @override
-  State<DetailWebPage> createState() => _DetailWebPageState();
-}
-
-class _DetailWebPageState extends State<DetailWebPage> {
-  final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -245,7 +239,6 @@ class _DetailWebPageState extends State<DetailWebPage> {
               ),
         backgroundColor: backGroundColor,
         body: SingleChildScrollView(
-          controller: _scrollController,
           child: Center(
             child: Container(
               width: width * 0.6,
@@ -301,7 +294,7 @@ class _DetailWebPageState extends State<DetailWebPage> {
                                 borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(30),
                                 ),
-                                child: Image.asset(widget.rumah.gambarProfil),
+                                child: Image.asset(rumah.gambarProfil),
                               ),
                             ),
                           ],
@@ -329,21 +322,21 @@ class _DetailWebPageState extends State<DetailWebPage> {
                               height: 10,
                             ),
                             Text(
-                              widget.rumah.deskripsi,
+                              rumah.deskripsi,
                               style: textStyle7a,
                             ),
                             const SizedBox(
                               height: 10,
                             ),
                             Text(
-                              widget.rumah.lokasi,
+                              rumah.lokasi,
                               style: textStyle7a,
                             ),
                             const SizedBox(
                               height: 10,
                             ),
                             Text(
-                              widget.rumah.harga,
+                              rumah.harga,
                               style: textStyle5,
                             ),
                           ],
@@ -422,7 +415,7 @@ class _DetailWebPageState extends State<DetailWebPage> {
                                   padding: const EdgeInsets.only(bottom: 10),
                                   child: Row(
                                     children: [
-                                      ...widget.rumah.galeriGambar
+                                      ...rumah.galeriGambar
                                           .map((e) => Container(
                                                 margin: const EdgeInsets.all(5),
                                                 width: width * 0.18,
@@ -460,36 +453,5 @@ class _DetailWebPageState extends State<DetailWebPage> {
           ),
         ));
   }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
 }
 
-class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({Key? key}) : super(key: key);
-
-  @override
-  State<FavoriteButton> createState() => _FavoriteButtonState();
-}
-
-class _FavoriteButtonState extends State<FavoriteButton> {
-  bool isFavorite = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        isFavorite ? Icons.favorite : Icons.favorite_border,
-        color: darkColor,
-      ),
-      onPressed: () {
-        setState(() {
-          isFavorite = !isFavorite;
-        });
-      },
-    );
-  }
-}

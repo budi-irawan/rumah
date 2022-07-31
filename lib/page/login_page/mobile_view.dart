@@ -9,18 +9,13 @@ class MobileViewLoginPage extends StatefulWidget {
   State<MobileViewLoginPage> createState() => _MobileViewLoginPageState();
 }
 
-// Define a corresponding State class.
-// This class holds the data related to the Form.
 class _MobileViewLoginPageState extends State<MobileViewLoginPage> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
-  final TextEditingController _satu = TextEditingController();
+  final _satu = TextEditingController();
   bool hide = true;
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
-    TextEditingController().dispose();
+    _satu.dispose();
     super.dispose();
   }
 
