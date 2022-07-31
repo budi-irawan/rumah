@@ -75,7 +75,7 @@ class CarouselDemo extends StatelessWidget {
                               end: Alignment.bottomLeft,
                               colors: <Color>[
                                 buttonColor1,
-                                Colors.blue,
+                                Color.fromARGB(255, 57, 163, 250),
                               ],
                             ),
                           ),
